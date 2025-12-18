@@ -1,0 +1,10 @@
+Fungsionalitas:
+a. Penambahan data toko.
+b. Penambahan data barang.
+c. Penentuan relasi toko dan barang yang dijual (dan sebalikknya).
+d. Menghapus data toko.
+e. Manghapus data barang.
+f. Menampilkan data keseluruhan toko beserta data barang yang dijualnya.
+g. Menampilkan data barang yang dijual oleh toko tertentu.
+h. Menampilkan data toko menjual barang tertentu.
+i. Menampilkan data toko yang paling lengkap jualannya dan yang paling sedikit.
