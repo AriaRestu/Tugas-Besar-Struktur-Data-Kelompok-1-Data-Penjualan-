@@ -2,55 +2,56 @@
 #define PENJUALAN_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-struct Parent {
-    int id;
-    string nama;
-    int omzet;
-    Parent* next;
-};
-
-struct Child {
-    int id;
-    string nama;
-    Child* next;
+struct Barang {
+    int idBarang;
+    string namaBarang;
+    float harga;
+    Barang* next;
 };
 
 struct Relasi {
-    Parent* parent;
-    Child* child;
+    Barang* ptrBarang;
     Relasi* next;
 };
 
-struct ListParent {
-    Parent* first;
+struct Toko {
+    int idToko;
+    string namaToko;
+    string alamat;
+    Toko* next;
+    Relasi* firstRelasi;
 };
 
-struct ListChild {
-    Child* first;
-};
+typedef Toko* adrToko;
+typedef Barang* adrBarang;
+typedef Relasi* adrRelasi;
 
-struct ListRelasi {
-    Relasi* first;
-};
+adrToko createToko(int, string, string);
+adrBarang createBarang(int, string, float);
+adrRelasi createRelasi(adrBarang);
 
-void init(ListParent &LP, ListChild &LC, ListRelasi &LR);
+void insertFirstToko(adrToko&, adrToko);
+void insertLastBarang(adrBarang&, adrBarang);
 
-void insertParentFirst(ListParent &LP);
-void insertParentLast(ListParent &LP);
-void deleteParent(ListParent &LP, ListRelasi &LR, int id);
-Parent* findParent(ListParent LP, int id);
-void showParent(ListParent LP);
+void deleteTokoBesertaRelasi(adrToko&, int);
+void deleteFirstBarang(adrBarang&);
 
-void insertChildLast(ListChild &LC);
-void deleteChild(ListChild &LC, ListRelasi &LR, int id);
-Child* findChild(ListChild LC, int id);
+adrToko findToko(adrToko, int);
+adrBarang findBarang(adrBarang, int);
 
-void connectParentChild(ListRelasi &LR, Parent* p, Child* c);
-void showAllRelation(ListParent LP, ListRelasi LR);
-void showChildFromParent(ListRelasi LR, int idParent);
-void deleteChildFromParent(ListRelasi &LR, int idParent, int idChild);
-int countChildFromParent(ListRelasi LR, int idParent);
+void connectTokoBarang(adrToko, adrBarang);
+void deleteRelasiBarang(adrToko, int);
+
+void showAllToko(adrToko);
+void showAllBarang(adrBarang);
+void showTokoWithBarang(adrToko);
+void showBarangTokoTertentu(adrToko);
+void showTokoMenjualBarang(adrToko, int);
+
+int countBarangToko(adrToko);
+void showTokoTerbanyakTersedikit(adrToko);
 
 #endif
